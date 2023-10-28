@@ -74,10 +74,10 @@
             <artifactId>velocity-engine-core</artifactId>
         </dependency>
 
-        <!-- Mysql驱动包 -->
+        <!-- MySQL驱动包 -->
         <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
+            <groupId>com.mysql</groupId>
+            <artifactId>mysql-connector-j</artifactId>
         </dependency>
 
         <!-- springboot测试模块-->

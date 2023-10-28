@@ -139,10 +139,10 @@
                 <version>${velocity.version}</version>
             </dependency>
 
-            <!-- Mysql驱动包 -->
+            <!-- MySQL驱动包 -->
             <dependency>
-                <groupId>mysql</groupId>
-                <artifactId>mysql-connector-java</artifactId>
+                <groupId>com.mysql</groupId>
+                <artifactId>mysql-connector-j</artifactId>
                 <version>${mysql-connector-java}</version>
             </dependency>
 
@@ -274,6 +274,7 @@
         <module>agileboot-common</module>
         <module>agileboot-domain</module>
         <module>agileboot-infrastructure</module>
+        <module>agileboot-flowable</module>
     </modules>
     <packaging>pom</packaging>
 
