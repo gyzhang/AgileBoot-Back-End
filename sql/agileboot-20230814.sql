@@ -360,3 +360,75 @@ INSERT INTO  sys_user (user_id, post_id, role_id, dept_id, username, nickname, u
 INSERT INTO  sys_user (user_id, post_id, role_id, dept_id, username, nickname, user_type, email, phone_number, sex, avatar, password, status, login_ip, login_date, is_admin, creator_id, create_time, updater_id, update_time, remark, deleted) VALUES (2, 2, 2, 5, 'ag1', 'valarchie2', 0, 'agileboot1@qq.com', '15666666666', 1, '/profile/avatar/20230725114818_avatar_b5bf400732bb43369b4df58802049b22.png', '$2a$10$7JB720yubVSZvUI0rEqK/.VqGOZTH.ulu33dHOiBE8ByOhJIrdAu2', 1, '127.0.0.1', '2022-05-21 08:30:54', 0, null, '2022-05-21 08:30:54', null, null, '测试员1', 0);
 INSERT INTO  sys_user (user_id, post_id, role_id, dept_id, username, nickname, user_type, email, phone_number, sex, avatar, password, status, login_ip, login_date, is_admin, creator_id, create_time, updater_id, update_time, remark, deleted) VALUES (3, 2, 0, 5, 'ag2', 'valarchie3', 0, 'agileboot2@qq.com', '15666666667', 1, '/profile/avatar/20230725114818_avatar_b5bf400732bb43369b4df58802049b22.png', '$2a$10$7JB720yubVSZvUI0rEqK/.VqGOZTH.ulu33dHOiBE8ByOhJIrdAu2', 1, '127.0.0.1', '2022-05-21 08:30:54', 0, null, '2022-05-21 08:30:54', null, null, '测试员2', 0);
 
+-- ----------------------------
+-- wf_form流程表单信息表
+-- ----------------------------
+drop table if exists `wf_form`;
+create table `wf_form` (
+   form_id      bigint(20)   not null auto_increment comment '表单主键',
+   form_name    varchar(64)           default ''     comment '表单名称',
+   content      longtext              default null   comment '表单内容',
+   create_by    varchar(64)           default ''     comment '创建者',
+   create_time  datetime              default null   comment '创建时间',
+   update_by    varchar(64)           default ''     comment '更新者',
+   update_time  datetime              default null   comment '更新时间',
+   remark       varchar(255)          default null   comment '备注',
+   del_flag     char(1)               default '0'    comment '删除标志（0代表存在 2代表删除）',
+   primary key (form_id)
+) engine = innodb comment = '流程表单信息表';
+
+
+-- ----------------------------
+-- wf_deploy_form流程实例关联表
+-- ----------------------------
+drop table if exists `wf_deploy_form`;
+create table `wf_deploy_form` (
+    deploy_id  varchar(64)     not null     comment '流程实例主键',
+    form_key   varchar(64)     not null     comment '表单Key',
+    node_key   varchar(64)     not null     comment '节点Key',
+    form_name  varchar(64)     default ''   comment '表单名称',
+    node_name  varchar(255)    default ''   comment '节点名称',
+    content    longtext        default null comment '表单内容',
+    primary key (deploy_id, form_key, node_key)
+) engine = innodb comment = '流程实例关联表单';
+
+-- ----------------------------
+-- wf_category流程分类表
+-- ----------------------------
+drop table if exists `wf_category`;
+create table `wf_category` (
+    category_id   bigint       not null  auto_increment comment '流程分类id',
+    category_name varchar(64)            default ''     comment '流程分类名称',
+    code          varchar(64)            default ''     comment '分类编码',
+    remark        varchar(500)           default ''     comment '备注',
+    create_by     varchar(64)            default ''     comment '创建者',
+    create_time   datetime               default null   comment '创建时间',
+    update_by     varchar(64)            default ''     comment '更新者',
+    update_time   datetime               default null   comment '更新时间',
+    del_flag      char(1)                default '0'    comment '删除标志（0代表存在 2代表删除）',
+    primary key (category_id)
+) engine=innodb comment = '流程分类表';
+
+-- ----------------------------
+-- wf_copy流程抄送表
+-- ----------------------------
+drop table if exists `wf_copy`;
+create table `wf_copy` (
+   copy_id         bigint        not null  auto_increment   comment '抄送主键',
+   title           varchar(255)            default ''       comment '抄送标题',
+   process_id      varchar(64)             default ''       comment '流程主键',
+   process_name    varchar(255)            default ''       comment '流程名称',
+   category_id     varchar(255)            default ''       comment '流程分类主键',
+   deployment_id   varchar(64)             default ''       comment '部署主键',
+   instance_id     varchar(64)             default ''       comment '流程实例主键',
+   task_id         varchar(64)             default ''       comment '任务主键',
+   user_id         bigint                  default null     comment '用户主键',
+   originator_id   bigint                  default null     comment '发起人主键',
+   originator_name varchar(64)             default ''       comment '发起人名称',
+   create_by       varchar(64)             default ''       comment '创建者',
+   create_time     datetime                default null     comment '创建时间',
+   update_by       varchar(64)             default ''       comment '更新者',
+   update_time     datetime                default null     comment '更新时间',
+   del_flag        char(1)                 default '0'      comment '删除标志（0代表存在 2代表删除）',
+   primary key (`copy_id`)
+) engine=innodb comment='流程抄送表';
