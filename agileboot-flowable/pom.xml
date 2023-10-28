@@ -1,0 +1,55 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.agileboot</groupId>
+    <artifactId>agileboot</artifactId>
+    <version>1.0.0</version>
+  </parent>
+
+  <artifactId>agileboot-flowable</artifactId>
+
+
+  <name>agileboot-flowable</name>
+  <url>https://github.com/gyzhang</url>
+  <description>
+    移植自ruoyi-flowable-plus（MIT许可证）的工作流代码（0.8.3），并添加了必须的工具类（后续需要移除，以便使用AgileBoot的工具类）
+    在此基础上根据需要进行修改扩展，并与源库断掉连接，单独发展，后期如有大的变动则手工合并
+  </description>
+
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <flowable.version>6.8.0</flowable.version>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>com.agileboot</groupId>
+      <artifactId>agileboot-infrastructure</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.flowable</groupId>
+      <artifactId>flowable-spring-boot-starter-process</artifactId>
+      <version>${flowable.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.googlecode.aviator</groupId>
+      <artifactId>aviator</artifactId>
+      <version>5.3.3</version>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+      </plugin>
+    </plugins>
+  </build>
+
+</project>
