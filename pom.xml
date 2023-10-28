@@ -175,14 +175,14 @@
                 <version>${project.version}</version>
             </dependency>
 
-            <!-- 定时任务-->
+            <!-- 对外服务接口模块-->
             <dependency>
                 <groupId>com.agileboot</groupId>
                 <artifactId>agileboot-api</artifactId>
                 <version>${project.version}</version>
             </dependency>
 
-            <!-- 代码生成-->
+            <!-- 业务领域逻辑模块 -->
             <dependency>
                 <groupId>com.agileboot</groupId>
                 <artifactId>agileboot-domain</artifactId>
@@ -193,6 +193,13 @@
             <dependency>
                 <groupId>com.agileboot</groupId>
                 <artifactId>agileboot-infrastructure</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <!-- 工作流模块-->
+            <dependency>
+                <groupId>com.agileboot</groupId>
+                <artifactId>agileboot-flowable</artifactId>
                 <version>${project.version}</version>
             </dependency>
 
